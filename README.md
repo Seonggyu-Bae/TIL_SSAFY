@@ -101,9 +101,31 @@ else:
 
 ```
 
+### 최빈수 구하기
+
+```python
+T = int(input())
+
+for test_case in range(1, T + 1):
+    case_num = int(input())
+    num_list = list(map(int, input().split()))
+    num_count = [0] * 101
+
+    for i in range(len(num_list)):
+        num_count[num_list[i]] += 1
+
+    max_num = 0
+    max_index = 0
+    # 최빈수가 여러개 일때는 가장 큰 점수 출력을 위해 >=
+    for i in range(len(num_count)):
+        if (num_count[i] >= max_num):
+            max_num = num_count[i]
+            max_index = i
+
+    print(f'#{case_num} {max_index}')
 
 
-
+```
 
 
 
