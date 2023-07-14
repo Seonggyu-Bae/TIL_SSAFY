@@ -1,4 +1,113 @@
-# 23/07/13
+# 23/07/14
+
+표현식(Expression)과 문장(statement)
+문장은 보통 여러 개의 표현식을 포함함
+
+- 문장은 실행 가능한 코드를
+
+- 변수 : 값을 참조하는 이름 ( 프로그램이 실행되는 동안 값을 저장하는 장소임 )
+
+- | 기호  | 연산자       |
+  | --- | --------- |
+  | -   | 음수 부호     |
+  | +   | 더하기       |
+  | -   | 뺄셈        |
+  | *   | 곱셈        |
+  | /   | 나눗셈       |
+  | //  | 정수 나눗셈(몫) |
+  | %   | 나머지       |
+  | **  | 지수(거듭제곱)  |
+
+Today
+
+변수, 문자열, 리스트, 딕셔너리
+출력,입력, 제어문, 반복문, 조건문
+
+
+
+
+
+- 제어문(Control Statement)의 종류 : 반복문(for, while), 조건문(if)
+
+
+
+#### 오늘 기본적인 문법을 배워서 파이선으로 가장 쉬운문제들을 풀어보았다.
+
+
+
+### 홀수만 더하기
+
+```python
+T = int(input())
+
+for test_case in range(1, T + 1):
+    sum=0
+    num_list = list(map(int, input().split()))
+    
+    for i in num_list:
+        if i%2!=0:
+            sum+=i
+            
+    print(f'#{test_case} {sum}')
+```
+
+
+
+### 최대수 구하기
+
+```python
+T = int(input())
+
+for test_case in range(1, T + 1):
+    num_list = list(map(int, input().split()))
+    max_num= max(num_list)
+    print(f'#{test_case} {max_num}')
+```
+
+
+
+### 중간값 찾기
+
+```python
+T = int(input())
+
+number = list(map(int, input().split()))
+number.sort()
+
+print(number[T//2])
+```
+
+
+
+### 자릿수 더하기
+
+```python
+number = list(map(int, input()))
+sum_number = sum(number)
+print(sum_number)
+```
+
+
+
+### 1대1 가위바위보
+
+```python
+a, b = map(int, input().split())
+
+if (a - b == -2 or a - b == 1):
+	print('A')
+else:
+    print('B')
+
+```
+
+
+
+
+
+
+
+### 23/07/13
 
 ---
 
@@ -9,8 +118,6 @@
 - 주로 개발자들이 텍스트와 코드를 작성해 문서화하기 위해 사용함
 
 - 이 README도 마크다운으로 작성중
-
-
 
 코드를 아래 처럼 문서화 할 수있다.
 
@@ -24,17 +131,11 @@ print('Hello')
 
 [네이버](https://www.naver.com/)
 
-
-
 ![아이유](https://img.tvreportcdn.de/cms-content/uploads/2023/07/12/e0d84f6c-e001-4acf-a949-226da0c3dd02.jpg)
 
-출처 : [아이유, 데뷔 15주년 전시 &#039;순간,&#039;...오늘(12일) 일반 예매 티켓 오픈](https://tvreport.co.kr/breaking/article/742504/)
+출처 : [아이유, 데뷔 15주년 전시 '순간,'...오늘(12일) 일반 예매 티켓 오픈](https://tvreport.co.kr/breaking/article/742504/)
 
-----
-
-
-
-
+---
 
 ### 2. CLI
 
@@ -46,13 +147,11 @@ print('Hello')
 
 출처 : [사람지능(Human Intelligence) : 네이버 블로그](https://blog.naver.com/human_intelligence/221723703567)
 
-
-
 ###### CLI 기초문법
 
 - touch : 파일생성
 
-- mkdir : 새 디렉토리(폴더) 생성 
+- mkdir : 새 디렉토리(폴더) 생성
 
 - ls : 현재 작업중인 디렉토리 내부의 폴더/파일 목록을 출력
 
@@ -64,9 +163,9 @@ print('Hello')
 
 ###### CLI에서 가장 중요한것 : 내가 현재 작업 하고 있는 위치(경로)를 알아야함
 
-- 절대 경로 : Root 디렉토리부터 목적 지점까지 거치는 모든 경로를 전부 작성한 것 
+- 절대 경로 : Root 디렉토리부터 목적 지점까지 거치는 모든 경로를 전부 작성한 것
   
-  - 윈도우 바탕 화면까지의 절대 경로 예시 (C:/Users/ssafy/Desktop) 
+  - 윈도우 바탕 화면까지의 절대 경로 예시 (C:/Users/ssafy/Desktop)
 
 - 상대 경로 : 현재 작업하고 있는 디렉토리를 기준으로 계산된 상대적 위치를 작성한 것
   
@@ -78,10 +177,6 @@ print('Hello')
 
 - 버전관리란? : 변화를 기록하고 추적하는 것
 
-
-
-
-
 ###### git의 역할
 
 - 코드의 버전(히스토리)를 관리
@@ -89,10 +184,6 @@ print('Hello')
 - 개발되어 온 과정 파악
 
 - 이전 버전과의 변경 사항 비교\
-
-
-
-
 
 ###### Git의 3가지 영역
 
@@ -106,8 +197,6 @@ print('Hello')
   
   ###### commit : 변경된 파일들을 저장하는 행위이며, 마치 사진을 찍듯이 기록한다하여 'snapshot' 이라고도 함
 
-
-
 ###### Git의 동작(명령어)
 
 - git init : 로컬 저장소 설정(초기화) -> git의 버전 관리를 시작할 디렉토리에서 진행
@@ -119,10 +208,6 @@ print('Hello')
   - 즉, 이미 로컬 저장소인 디렉토리 내부 하단에서 git init 명령어를 다시 입력X
   
   - git 저장소 안에 git 저장소가 있을 경우 가장 바깥 쪽의 git 저장소가 안쪽의 git 저장소의 변경사항을 추적할 수 없기 때문
-
-
-
-
 
 - git add : 변경사항이 있는 파일을 staging area에 추가
 
@@ -137,3 +222,9 @@ print('Hello')
 - git config --global -l : git global 설정 정보 보기
   
   ![이미지](https://postfiles.pstatic.net/MjAyMzA3MTNfMjE4/MDAxNjg5MjM0ODc0NjUw.oSjAyJs_VASHkDREXzQniuUS-yR_llCj-b4SeDWzZu4g.XD3TAbdcpKwRTOkZ5PMpkFovMhvn_tCU81q_5cJP0mAg.PNG.bestar96/image.png?type=w773)
+  
+  ---
+  
+  ---
+  
+  ---
