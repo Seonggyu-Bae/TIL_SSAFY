@@ -5,8 +5,7 @@ for test_case in range(1, T + 1):
     A = [list(map(int,input().split())) for _ in range(N)]
 
     print(f'#{test_case}')
-    
-## 아래 구현도 점검필요
+
     for i in range(N):
         for j in range(N-1,-1,-1):
             print(f'{A[j][i]}',end="")
