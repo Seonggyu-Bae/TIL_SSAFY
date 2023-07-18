@@ -1,3 +1,189 @@
+# 23/07/18
+
+#### Sequence Types : 여러 개의 값들을 <u>순서대로 나열</u>하여 저장하는 자료형
+
+- Sequence Types 특징
+  
+  1. 순서(sequnece): 값들이 순서대로 저장(정렬 X)
+  
+  2. 인덱싱(Indexing): 각 값에 고유한 인덱스(번호)를 가지고 있으며, 인덱스를 사용하여 특정 위치의 값을 선택하거나 수정할 수있음
+  
+  3. 슬라이싱(Slicing): 인덱스 범위를 조절해 부분적인 값을 추출할 수 있음
+  
+  4. 길이(Length): len() 함수를 사용하여 저장된 값의 개수(길이)를 구할 수 있음
+  
+  5. 반복(Iteration): 반복문을 사용하여 저장된 값들을 반복적으로 처리할 수 있음
+
+##### 문자열 표현
+
+- 문자열은 단일 문자나 여러 문자의 조합으로 이루어짐
+
+- 작은따옴표 또는 큰따옴표로 감싸서 표현
+
+- ```python
+  #Hello, World!
+  print('Hello, World!')
+  
+  #str
+  print(type('Hello, World!'))
+  ```
+
+- **Escape sequence**
+  
+  - 역슬래시뒤에 특정 문자가 와서 특수한 기능을 하는 문자 조합
+  
+  - 파이선의 일반적인 문법 규칙을 잠시 탈출한다는 의미
+
+| 예약 문자 | 내용(의미) |
+|:-----:|:------:|
+| \n    | 줄 바꿈   |
+| \t    | 탭      |
+| \\\   | 백슬래시   |
+| \'    | 작은 따옴표 |
+| \"    | 큰 따옴표  |
+
+- **f-string**
+  
+  - 문자열에 f 또는 F접두어를 붙이고 표현식을 {표현식}로 작성하여 문자열에 파이선 표현식의 값을 삽입가능
+  
+  - ```python
+    bugs = 'roaches'
+    counts = 13
+    area = 'room'
+    
+    #Debugging roaches 13 room
+    print(f'Debugging {bugs} {counts} {area}')
+    ```
+
+**문자열의 시퀀스 특징**
+
+```python
+my_str = 'hello'
+
+
+print(my_str[1]) #e 인덱싱
+
+print(my_str[2:4]) #ll 슬라이싱
+
+print(len(my_str)) #5 길이
+```
+
+
+
+#### 인덱스(index)
+
+- 시퀀스 내의 값들에 대한 고유한 번호로, 각 값의 위치를 식별하는데 사용되는 숫자
+
+
+
+#### 슬라이싱(slicing)
+
+- 시퀀스의 일부분을 선택하여 추출하는 작업
+
+- 시작 인덱스와 끝 인덱스를 지정하여 해당 범위의 값을 포함하는 새로운 시퀀스를 생성
+  
+  
+
+#### 리스트(list)
+
+- **여러 개의 값을 순서대로 저장하는 <u>변경 가능한</u> 시퀀스 자료형**
+
+- 0개 이상의 객체를 포함하며 데이터 목록을 저장
+
+- 대괄호로 표기
+
+- 데이터는 어떤 자료형도 저장할 수있음
+
+- ```python
+  m_lst_1 = []
+  m_lst_2 = [1, 'a', 3, 'b', 5]
+  m_lst_3 = [1, 2, 3, 'python', ['hello', 'world', '!!!']]
+  ```
+
+- 리스트의 시퀀스 특징
+  
+  ```python
+  m_lst = [1, 2, 3, 'python', ['hello', 'world', '!!!']]
+  
+  print(m_lst[1]) # 2
+  
+  print(m_lst[2:4]) #[3, 'python']
+  print(m_lst[:3]) # [1, 2, 3,]
+  print(m_lst[3:]) # ['python', ['hello', 'world', '!!!']]
+  print(m_lst[0:5:2]) #[1, 3, ['hello', 'world', '!!!']]
+  print(m_lst[[-1][1][0]) # w
+  print(m_lst[::-1]) # [['hello', 'world', '!!!'], 'python', 3, 2, 1]
+  ```
+  
+  
+
+#### 튜플(tuple)
+
+- **여러 개의 값을 순서대로 저장하는 <u>변경 불가능한 </u>시퀀스 자료형**
+
+- 0개 이상의 객체를 포함하며 데이터 목록을 저장
+
+- 소괄호로 표기
+
+- 데이터는 어떤 자료형도 저장할 수 있음
+
+```python
+my_tuple = (1, 'a', 3, 'b, 5)
+
+
+
+my_tuple[1] = 'z'
+# TypeError : 'tuple object does not support item assignment'
+```
+
+- 튜플의 불변 특성을 사용한 안전하게 여러 개의 값을 전달, 그룹화, 다중할당 등 개발자가 직접 사용하기 보다 '파이선 내부 동작' 에서 주로 사용
+
+
+
+#### range
+
+- 연속된 정수 시퀀스를 생성하는 변경 불가능한 자료형
+
+- range(n)
+  
+  - 0부터 n-1 까지의 숫자의 시퀀스
+
+- range(n,m)
+  
+  - n부터 m-1까지의 숫자 시퀀스
+
+
+
+
+
+## Non-sequence Types
+
+
+
+#### 딕셔너리(dict)
+
+- key - value 쌍으로 이루어진 순서와 중복이 없는 변경 가능한 자료형
+
+- key는 변경 불가능한 자료형만 사용 가능
+
+- value는 모든 자료형 사용 가능
+
+- 중괄호로 표기
+
+- ```python
+  my_dict = {'apple': 12, 'list': [1, 2, 3]}
+  
+  print(my_dict['apple']) #12
+  print(my_dict['list']) # [1, 2, 3]
+  
+  # change value
+  my_dict
+  ```
+
+
+
+---
+
 # 23/07/14
 
 표현식(Expression)과 문장(statement)
@@ -23,17 +209,9 @@ Today
 변수, 문자열, 리스트, 딕셔너리
 출력,입력, 제어문, 반복문, 조건문
 
-
-
-
-
 - 제어문(Control Statement)의 종류 : 반복문(for, while), 조건문(if)
 
-
-
 #### 오늘 기본적인 문법을 배워서 파이선으로 가장 쉬운문제들을 풀어보았다.
-
-
 
 ### 홀수만 더하기
 
@@ -43,15 +221,13 @@ T = int(input())
 for test_case in range(1, T + 1):
     sum=0
     num_list = list(map(int, input().split()))
-    
+
     for i in num_list:
         if i%2!=0:
             sum+=i
-            
+
     print(f'#{test_case} {sum}')
 ```
-
-
 
 ### 최대수 구하기
 
@@ -64,8 +240,6 @@ for test_case in range(1, T + 1):
     print(f'#{test_case} {max_num}')
 ```
 
-
-
 ### 중간값 찾기
 
 ```python
@@ -77,8 +251,6 @@ number.sort()
 print(number[T//2])
 ```
 
-
-
 ### 자릿수 더하기
 
 ```python
@@ -87,18 +259,15 @@ sum_number = sum(number)
 print(sum_number)
 ```
 
-
-
 ### 1대1 가위바위보
 
 ```python
 a, b = map(int, input().split())
 
 if (a - b == -2 or a - b == 1):
-	print('A')
+    print('A')
 else:
     print('B')
-
 ```
 
 ### 최빈수 구하기
@@ -123,11 +292,7 @@ for test_case in range(1, T + 1):
             max_index = i
 
     print(f'#{case_num} {max_index}')
-
-
 ```
-
-
 
 ### 23/07/13
 
