@@ -1,3 +1,360 @@
+# 23/07/19
+
+
+
+#### 함수(Functions) : 특정 작업을 수행하기 위한 재사용 가능한 코드 묶음
+
+- 왜 함수를 사용하는가?
+  
+  - 재사용성이 높아지고, 코드의 가독성과 유지보수성 향상
+
+```python
+def get_sum(num1, num2): # num1, num2: parameter (input)
+
+    """이것은 두 수를 받아
+        두 수의 합을 반환하는 함수 입니다.
+        get_sum(1,2)
+        3
+    """
+
+    return num1 + num2 #return value (output)
+```
+
+- 함수 정의
+  
+  - 함수 정의는 def 키워드로 시작
+  
+  - def 키워드 이후 함수 이르 작성
+  
+  - 괄호안에 매개변수를 정의할 수 있음
+  
+  - 매개변수는 함수에 전달되는 값을 나타냄
+    
+    
+
+- 함수 body
+  
+  - 콜론(:) 다음에 들여쓰기 된 코드 블록
+  
+  - 함수가 실행 될 때 수행되는 코드를 정의
+  
+  - Docstring은 함수 body 앞에 선택적으로 작성 가능한 함수 설명서
+    
+    
+
+- 함수 반환 값
+  
+  - 함수는 필요한 경우 결과를 반환할 수 있음
+  
+  - return 키워드 이후에 반환할 값을 명시
+  
+  - return문은 함수의 실행을 종료하고, 결과를 호출 부분으로 반환
+  
+  - 반환 값이 없는 함수는 None이 return됨
+    
+    
+
+
+
+
+
+### 매개변수와 인자
+
+- **매개변수(parameter) : 함수를 정의할 때, 함수가 받을 값을 나타내는 변수**
+
+- **인자(argument) : 함수를 호출할 때, 실제로 전달되는 값**
+
+
+
+##### 인자의 종류
+
+```python
+def greet(name, age=30):
+    print(f,'안녕하세요, {name}님! {age}살이시군요.')
+
+
+
+greet(name='Dave', age=35)    #안녕하세요, Dave님! 35살이시군요.
+greet(24, 40)                 #안녕하세요, 24님! 40살이시군요.
+greet(24,)                    #안녕하세요, 24님! 30살이시군요.
+greet(age = 20, name='Dave')  #안녕하세요, Dave님! 20살이시군요.
+greet(age = 20,'Dave')        #Position 오류
+```
+
+1. **위치인자 : 함수 호출 시 인자의 위치에 따라 전달되는 인자**
+   
+   1. 위치인자는 함수 호출 시 반드시 값을 전달해야함
+      
+      
+
+2. **기본인자 :  함수 정의에서 매개변수에 기본 값을 할당하는 것**
+   
+   1. 함수 호출 시 인자를 전달하지 않으면, 기본값이 매개변수에 할당됨
+      
+      
+
+3. **키워드 인자 : 함수 호출 시 인자의 이름과 함께 값을 전달하는 인자**
+   
+   1. 매개변수와 인자를 일치시키지 않고, 특정 매개변수에 값을 할당할 수있음
+   
+   2. 인자의 순서는 중요하지않고, 인자의 이름을 명시하여 전달
+   
+   3. **<u>단 호출 시 키워드 인자는 위치 인자 뒤에 위치해야 함</u>**
+      
+      
+
+4. **임의의 인자 목록 : 정해지지 않은 개수의 인자를 처리하는 인자**
+   
+   1. 함수 정의 시 매개변수 앞에 **'*'** 를 붙여 사용, 여러 개의 인자를 tuple로처리
+
+```python
+def caculate_sum(*args):
+    print(args)
+    total = sum(args)
+    print(f'합계: {total}')
+
+
+caculate_sum(1,2,3) #합계: 6
+```
+
+5. **임의의 키워드 인자 목록 : 정해지지 않는 개수의 키워드 인자를 처리하는 인자**
+   
+   1. 함수 정의 시 매개변수 앞에 ****** 를 붙여 사용하며, 여러 개의 인자를 dictionary로 묶어 처리    
+
+```python
+def print_info(**kwargs):
+    print(kwargs)
+
+print_info(name='Eve', age=30) # {'name : 'Eve', 'age' : 30}
+```
+
+
+
+#### 함수와 Scope
+
+- 함수는 코드 내부에 local scope를 생성하며, 그 외의 공간인 global scope로 구분
+  
+  
+
+- scope
+  
+  - global scope : 코드 어디에서든 참조할 수 있는 공간
+  
+  - local scople : 함수가 만든 scople (함수 내부에서만 참조 가능)
+    
+    
+
+- variable
+  
+  - global variable : global scope에 정의된 변수
+  
+  - local variable : local scope에 정의된 변수
+    
+    
+
+```python
+def func():
+    num = 20
+    print('local',  num) #local 20
+
+func()
+
+print('global', num) #NameError : name 'num' is not defined
+```
+
+- num은 local scope에 존재하기 때문에 global에서 사용할 수 없음
+
+- 이는 변수의 **수명주기**와 연관있음
+
+
+
+##### 변수 수명주기 : 변수가 선언되는 위치와 스코프에 따라 결정됨
+
+1. **built-in scope : 파이썬이 실행돤 이후부터 영원히 유지**
+
+2. **global scope : 모듈이 호출된 시점 이후 혹은 인터프리터가 끝날 때까지 유지**
+
+3. **local scope : 함수가 호출될 때 생성되고, 함수가 종료될 때까지 유지**
+
+
+
+**local scope < enclosed scope < global scope < built-in scope**
+
+- **함수 내에서는 바깥 scope의 변수에 접근 가능하나 수정은 할 수없음**
+
+- 그래도 안쓰는게 좋음
+
+
+
+###### global 키워드
+
+- 변수의 스코프를 전역 범위로 지정하기 위해 사용
+
+- 일반적으로 함수 내에서 전역 변수를 수정하려는 경우에 사용
+
+- global 키워드 선언 전에 접근하면 오류
+
+- 매개변수에 global 사용 불가
+
+
+
+
+
+
+
+#### 재귀 함수 : 함수 내부에서 자기 자신을 호출하는 함수
+
+- 특정 알고리즘 식을 표현할 때 변수의 사용이 줄어들며, 코드의 가독성이 높아짐
+
+- 1개 이상의 base case(종료되는 상황)가 존재하고, 수렴하도록 작성
+
+- **종료 조건을 명확히**
+
+- **반복되는 호출이 종료 조건을 향하도록 작성**
+
+```python
+def factorial(n):
+    if n == 0: #종료 조건 : n이 0이면 1을 반환
+        return 1
+    return n * factorial(n-1) # 재귀 호출 : n과 n-1의 팩토리얼을 곱한 결과반환
+
+
+result = factorial(5)
+print(result) #150
+```
+
+
+
+###### 유용한 내장 함수
+
+
+
+1. **map(function, iterable)**
+   
+   1. 순회 가능한 데이터구조(iterable)의 모든 요소에 **함수를 적용**하고, 그 결과를 map object로 반환
+
+```python
+numbers = [1, 2, 3]
+result = map(str, numbers)
+
+print(result) #<map object at 0xfaffgfaga34>
+print(list(result)) #['1', '2', '3']
+```
+
+
+
+2. **zip(*iterables)**
+   
+   1. 임의의 iterable을 모아 튜플을 원소로 하는 zip object를 반환
+
+```python
+girls = ['jane', 'ashley']
+boys = ['peter', 'jay']
+pair = zip(girls, boys)
+
+
+print(pair) #<zip object at 0xfaffgfaga34>
+print(list(pair)) #[('jane', 'peter'), ('ashley', 'jay')]
+```
+
+
+
+##### lambda 함수 : 이름 없이 정의되고 사용되는 익명 함수
+
+- 함수 구조 : lambda 매개변수 : 표현식
+
+- lambda 키워드
+  
+  - 람다 함수를 선언하기 위해 사용되는 키워드
+
+- 매개변수
+  
+  - 함수에 전달되는 매개변수들
+  
+  - 여러 개의 매개변수가 있을 경우 쉼표로 구분
+
+- 표현식
+  
+  - 함수의 실행되는 코드 블록으로, 결과값을 반환하는 표현식으로 작성
+
+
+
+```python
+#map + lambda
+
+numbers = [1,2,3,4,5]
+result = list(map(lambda x: x * 2, numbers))
+
+print(result)
+```
+
+
+
+#### 모듈(Module)
+
+한 파일로 묶인 변수와 함수의 모음, 특정한 기능을 하는 코드가 작성된 파이선 파일(.py)
+
+- 모듈 내 변수와 함수에 접근하려면 import문이 필요
+
+- ex) import math
+
+- 내장 함수 help를 사용해 모듈에 무엇이 들어있는지 확인 가능 ex) help(math)
+
+- '.' 은 "점의 왼쪽 객체에서 점의 오른쪽 이름을 찾아라" 라는 의미의 연산자 ex) math.pi
+
+
+
+##### 파이썬 표준 라이브러리
+
+- 파이썬 언어와 함께 제공되는 다양한 모듈과 패키지의 모음
+
+
+
+##### 패키지
+
+- 관련된 모듈들을 하나의 디렉토리에 모아 놓은 것
+
+- Ex)
+
+- my_pakage
+  
+  - math
+    
+    - my_math.py
+  
+  - statistics
+    
+    - tools.py
+
+
+
+- 사용법
+
+```python
+from my_package.math import my_math
+
+from my_package.statistics import tools
+
+print(my_math.add(1,2))
+print(tools.mod(1,2))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+----
+
+
+
 # 23/07/18
 
 #### Sequence Types : 여러 개의 값들을 <u>순서대로 나열</u>하여 저장하는 자료형
@@ -68,21 +425,15 @@ print(my_str[2:4]) #ll 슬라이싱
 print(len(my_str)) #5 길이
 ```
 
-
-
 #### 인덱스(index)
 
 - 시퀀스 내의 값들에 대한 고유한 번호로, 각 값의 위치를 식별하는데 사용되는 숫자
-
-
 
 #### 슬라이싱(slicing)
 
 - 시퀀스의 일부분을 선택하여 추출하는 작업
 
 - 시작 인덱스와 끝 인덱스를 지정하여 해당 범위의 값을 포함하는 새로운 시퀀스를 생성
-  
-  
 
 #### 리스트(list)
 
@@ -114,8 +465,6 @@ print(len(my_str)) #5 길이
   print(m_lst[[-1][1][0]) # w
   print(m_lst[::-1]) # [['hello', 'world', '!!!'], 'python', 3, 2, 1]
   ```
-  
-  
 
 #### 튜플(tuple)
 
@@ -138,8 +487,6 @@ my_tuple[1] = 'z'
 
 - 튜플의 불변 특성을 사용한 안전하게 여러 개의 값을 전달, 그룹화, 다중할당 등 개발자가 직접 사용하기 보다 '파이선 내부 동작' 에서 주로 사용
 
-
-
 #### range
 
 - 연속된 정수 시퀀스를 생성하는 변경 불가능한 자료형
@@ -152,13 +499,7 @@ my_tuple[1] = 'z'
   
   - n부터 m-1까지의 숫자 시퀀스
 
-
-
-
-
 ## Non-sequence Types
-
-
 
 #### 딕셔너리(dict)
 
@@ -179,8 +520,6 @@ my_tuple[1] = 'z'
   # change value
   my_dict
   ```
-
-
 
 ---
 
