@@ -71,5 +71,5 @@ def my_sum(*args):
 
 my_sum(1,2,3,4,5,6,124531,53163156)
 
-# 타입에러남 my_sum(lst)
+# my_sum(lst) -> 타입에러
 my_sum(*lst) #언패킹해서 넣으면 가능
