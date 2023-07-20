@@ -26,7 +26,8 @@ many_user = list(map(create_user, name, age, address))
 
 info = {}
 info = map(lambda x: x['name'],many_user)
-info = map(lambda y: +y['age'],many_user)
+info = map(lambda y: y['age'],many_user)
+
 print(list(info))
 
 '''

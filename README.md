@@ -1,6 +1,467 @@
+# 
+
+
+
+
+
+# 23/07/20
+
+
+
+### 제어문(Control Statement)
+
+- 코드의 실행 흐름을 제어하는데 사용되는 구문
+
+- **조건**에 따라 코드 블록을 실행하거나 **반복**적으로 코드를 실행
+
+
+
+### 조건문(Conditional Statement)
+
+- 주어진 조건식을 평가하여 해당 조건이 참(True)인 경우에만 코드 블록을 실행하거나 건너뜀
+
+- 'if ' statement
+  
+  ```python
+  dust = 35
+  
+  if dust > 150:
+      print("So Bad")
+      if dust > 300:
+          print("Fucking Bad Don't Go Outside")
+  elif dust > 80:
+      print("Bad")
+  elif dust > 30:
+      print("SoSo")
+  else:
+      print("Good")
+  ```
+
+
+
+
+
+### 반복문(Loop Statament)
+
+- 주어진 코드 블록을 여러 번 반복해서 실행하는 구문
+  
+  - 특정 작업을 반복적으로 수행
+  
+  - 주어진 조건이 참인 동안 반복해서 실행
+
+
+
+
+
+### For
+
+- 임의의 시퀀스의 항목들을 그 시퀀스에 들어있는 순서대로 반복
+
+
+
+```python
+for variable in iterable:
+    code block
+
+#example
+
+items = ['apple', 'banana', 'coconut']
+
+
+for item in items:
+    print(item)
+
+"""
+apple
+banana
+coconut
+"""
+```
+
+- 리스트 내 첫 항목이 반복 변수에 할당되고 코드블록이 실행
+
+- 다음으로 반복 변수에 리스트의 2번째 항목이 할당되고 코드블록이 다시 실행
+
+- 마지막으로 반복 변수에 리스트의 마지막 요소가 할당되고 코드블록이 실행
+
+
+
+
+
+**반복 가능한 객체(iterable) :  반복문에서 순회할 수있는 객체**
+
+- 시퀀스 객체 뿐만 아니라 dict, set 등도 포함
+
+
+
+
+
+```python
+country = 'Korea'
+
+for char in country:
+    print(char)
+
+"""
+K
+o
+r
+e
+a
+"""
+
+#------------------------------------------------------
+
+for i in range(5):
+    print(i)
+
+"""
+0
+1
+2
+3
+4
+"""
+
+#-----------------------------------------------------
+
+numbers = [4, 6, 10, -8, 5]
+
+for i in range(len(numbers)):
+    numbers[i] = numbers[i] * 2
+
+print(numbers)
+
+# [8, 12, 20, -16, 10]
+
+#---------------------------------------------------
+
+outers = ['A', 'B']
+inners = ['c', 'd']
+
+for outer in outers:
+    for inner in inners:
+        print(outer, inner)
+
+"""
+Ac
+Ad
+Bc
+Bd
+"""
+
+#-----------------------------------------------------
+
+elements = [['A','B'],['c','d']]
+
+for elem in elements:
+    print(elem)
+
+"""
+['A','B']
+['c','d']
+"""
+
+
+for elem in elements:
+    for item in elem:
+        print(item)
+
+"""
+A
+B
+c
+d
+"""
+```
+
+
+
+
+
+### while
+
+- 주어진 조건식이 참(True)인 동안 코드를 반복해서 실행
+
+- 조건식이 거짓(False)가 될 때 까지 반복
+
+
+
+
+
+```python
+while conditional_expression:
+    code block
+
+#example
+
+a=0
+
+while a < 3:
+    print(a)
+    a+=1
+
+print('끝')
+
+"""
+0
+1
+2
+끝
+"""
+
+#----------------------------------------------
+
+number = int(input('type posivie int: '))
+
+while number <= 0:
+    if number < 0:
+        print("음수를 입력했습니다.")
+    else:
+        print("0은 양의 정수가 아닙니다.")
+    number = int(input(''type posivie int: '))
+
+print('Good Job!')
+
+
+
+
+```
+
+
+
+### while 문은 반드시 **<u>종료 조건</u>**이 필요
+
+
+
+### 적절한 반복문 활용하기
+
+- for
+  
+  - 반복 횟수가 명확하게 정해져 있는 경우에 유용
+  
+  - 예를 들어 리스트, 튜플, 문자열 등과 같은 시퀀스 형식의 데이터를 처리할 때
+
+
+
+- while
+  
+  - 반복 횟수가 불명확하거나 조건에 따라 반복을 종료해야 할 때 유용
+  
+  - 예를 들어 사용자의 입력을 받아서 특정 조건이 충족될 때까지 반복하는 경우
+
+
+
+### 반복 제어
+
+##### for 문과 while은 매 반복마다 본문 내 모든 코드를 실행하지만,
+
+##### 때때로 일부만 실행하느 것이 필요할 때가 있음
+
+
+
+- break : 반복을 즉시 중지
+
+- continue : 다음 반복으로 건너뜀
+
+
+
+
+
+##### break 예시
+
+```python
+number = int(input('insert positive integer: ')
+
+
+while number <=0:
+    if number == -9999:
+        print('program will shut down.')
+        break
+    
+    if number < 0:
+        print('you insert negative integer')
+    else:
+        print('0 is not positive integer')
+    
+    number = int(input('insert posivie integer plz..: ')
+    
+print(f'your input_number is {number}')
+
+#----------------------------------------------------------------
+
+numbers = [1,3,5,6,7,9,10,11]
+found_even = False
+
+for num in numbers:
+    if num % 2 == 0:
+    print('find first even number:',num)
+    found_even = True
+    break
+
+if not found_even:
+    print('Can't find even number')
+
+
+
+```
+
+
+
+##### continue 예시
+
+
+
+```python
+numbers = [1,2,3,4,5,6,7,8,9,10]
+
+for num in numbers:
+    if num % 2 ==0:
+        continue
+    print(num)
+
+"""
+1
+3
+5
+7
+9
+"""
+
+
+
+```
+
+
+
+#### break 와 continue 주의사항
+
+- break와 continue를 남용하는 것은 코드의 가독성을 저하시킬 수 있음
+
+- **특정한 종료 조건**을 만들어 break를 대신하거나, **if 문을 사용**해 continue 처럼 코드를 건너 뛸 수도 있음
+
+- 약간의 시간이 들더라도 가능한 코드의 가독성을 유지하고 코드의 의도를 명확하게 작성하도록 노력하는 것이 중요
+
+
+
+
+
+### List Comprehension : 간결하고 효율적인 리스트 생성 방법
+
+
+
+```python
+# List Comprehension 구조
+# [expression for variable in iterable]
+# list(expression for variable in iterable)
+
+
+# 사용전 
+numbers = [1,2,3,4,5]
+squared_num = []
+
+
+for num in numbers:
+    squaraed_num.append(num**2)
+
+
+#사용후 
+
+numbers_1 = [1,2,3,4,5]
+squared_num_1 = [num**2 for num in numbers_1]
+
+```
+
+###### 참고 List Comprehension과 if 조건문
+
+[expression for 변수 in iterable if 조건식]
+
+list(expression for 변수 in iterable if 조건식)
+
+
+
+
+
+###### 참고
+
+- pass : 아무런 동작도 수행하지 않고 넘어가는 역할
+  
+  - 문법적으로 문장이 필요하지만 프로그램 실행에는 영향을 주지않아야 할 때 사용
+
+
+
+- pass 예시
+  
+  - 코드 작성 중 미완성 부분
+    
+    - 구현해야 할 부분이 나중에 추가될 수 있고, 코드를 컴파일 하는 동안 오류가 발생 하지 않음
+  
+  ```python
+  def my_function():
+      pass
+  ```
+  
+  
+  
+  - 조건문에서 아무런 동작을 수행하지 않아야 할 때
+  
+  ```python
+  if condition:
+      pass # nothing to do
+  else:
+      #some code here
+  ```
+  
+  
+  
+  - 무한 루프에서 조건이 충족되지 않을 때 pass를 사용하여 루프를 계속 진행하는 방법
+
+```python
+while True:
+    if condition:
+        break
+    elif condition:
+        pass
+    else:
+        print('..')
+```
+
+
+
+## enumerate
+
+##### enumerate(iterable, start=0)
+
+##### iterable 객체의 각 요소에 대해 인덱스와 함께 반환하는 내장함수
+
+```python
+fruits = ['apple', 'banana', 'cherry']
+
+
+for index, fruit in enumerate(fruits):
+    print(f'index {index}: {fruits}')
+
+
+"""
+index 0: apple
+index 1: banana
+index 2: cherry
+"""
+```
+
+
+
+
+
+
+
+---
+
+
+
+
+
 # 23/07/19
-
-
 
 #### 함수(Functions) : 특정 작업을 수행하기 위한 재사용 가능한 코드 묶음
 
@@ -29,8 +490,6 @@ def get_sum(num1, num2): # num1, num2: parameter (input)
   - 괄호안에 매개변수를 정의할 수 있음
   
   - 매개변수는 함수에 전달되는 값을 나타냄
-    
-    
 
 - 함수 body
   
@@ -39,8 +498,6 @@ def get_sum(num1, num2): # num1, num2: parameter (input)
   - 함수가 실행 될 때 수행되는 코드를 정의
   
   - Docstring은 함수 body 앞에 선택적으로 작성 가능한 함수 설명서
-    
-    
 
 - 함수 반환 값
   
@@ -51,20 +508,12 @@ def get_sum(num1, num2): # num1, num2: parameter (input)
   - return문은 함수의 실행을 종료하고, 결과를 호출 부분으로 반환
   
   - 반환 값이 없는 함수는 None이 return됨
-    
-    
-
-
-
-
 
 ### 매개변수와 인자
 
 - **매개변수(parameter) : 함수를 정의할 때, 함수가 받을 값을 나타내는 변수**
 
 - **인자(argument) : 함수를 호출할 때, 실제로 전달되는 값**
-
-
 
 ##### 인자의 종류
 
@@ -84,14 +533,10 @@ greet(age = 20,'Dave')        #Position 오류
 1. **위치인자 : 함수 호출 시 인자의 위치에 따라 전달되는 인자**
    
    1. 위치인자는 함수 호출 시 반드시 값을 전달해야함
-      
-      
 
 2. **기본인자 :  함수 정의에서 매개변수에 기본 값을 할당하는 것**
    
    1. 함수 호출 시 인자를 전달하지 않으면, 기본값이 매개변수에 할당됨
-      
-      
 
 3. **키워드 인자 : 함수 호출 시 인자의 이름과 함께 값을 전달하는 인자**
    
@@ -100,8 +545,6 @@ greet(age = 20,'Dave')        #Position 오류
    2. 인자의 순서는 중요하지않고, 인자의 이름을 명시하여 전달
    
    3. **<u>단 호출 시 키워드 인자는 위치 인자 뒤에 위치해야 함</u>**
-      
-      
 
 4. **임의의 인자 목록 : 정해지지 않은 개수의 인자를 처리하는 인자**
    
@@ -128,29 +571,21 @@ def print_info(**kwargs):
 print_info(name='Eve', age=30) # {'name : 'Eve', 'age' : 30}
 ```
 
-
-
 #### 함수와 Scope
 
 - 함수는 코드 내부에 local scope를 생성하며, 그 외의 공간인 global scope로 구분
-  
-  
 
 - scope
   
   - global scope : 코드 어디에서든 참조할 수 있는 공간
   
   - local scople : 함수가 만든 scople (함수 내부에서만 참조 가능)
-    
-    
 
 - variable
   
   - global variable : global scope에 정의된 변수
   
   - local variable : local scope에 정의된 변수
-    
-    
 
 ```python
 def func():
@@ -166,8 +601,6 @@ print('global', num) #NameError : name 'num' is not defined
 
 - 이는 변수의 **수명주기**와 연관있음
 
-
-
 ##### 변수 수명주기 : 변수가 선언되는 위치와 스코프에 따라 결정됨
 
 1. **built-in scope : 파이썬이 실행돤 이후부터 영원히 유지**
@@ -176,15 +609,11 @@ print('global', num) #NameError : name 'num' is not defined
 
 3. **local scope : 함수가 호출될 때 생성되고, 함수가 종료될 때까지 유지**
 
-
-
 **local scope < enclosed scope < global scope < built-in scope**
 
 - **함수 내에서는 바깥 scope의 변수에 접근 가능하나 수정은 할 수없음**
 
 - 그래도 안쓰는게 좋음
-
-
 
 ###### global 키워드
 
@@ -195,12 +624,6 @@ print('global', num) #NameError : name 'num' is not defined
 - global 키워드 선언 전에 접근하면 오류
 
 - 매개변수에 global 사용 불가
-
-
-
-
-
-
 
 #### 재귀 함수 : 함수 내부에서 자기 자신을 호출하는 함수
 
@@ -223,11 +646,7 @@ result = factorial(5)
 print(result) #150
 ```
 
-
-
 ###### 유용한 내장 함수
-
-
 
 1. **map(function, iterable)**
    
@@ -240,8 +659,6 @@ result = map(str, numbers)
 print(result) #<map object at 0xfaffgfaga34>
 print(list(result)) #['1', '2', '3']
 ```
-
-
 
 2. **zip(*iterables)**
    
@@ -256,8 +673,6 @@ pair = zip(girls, boys)
 print(pair) #<zip object at 0xfaffgfaga34>
 print(list(pair)) #[('jane', 'peter'), ('ashley', 'jay')]
 ```
-
-
 
 ##### lambda 함수 : 이름 없이 정의되고 사용되는 익명 함수
 
@@ -277,8 +692,6 @@ print(list(pair)) #[('jane', 'peter'), ('ashley', 'jay')]
   
   - 함수의 실행되는 코드 블록으로, 결과값을 반환하는 표현식으로 작성
 
-
-
 ```python
 #map + lambda
 
@@ -287,8 +700,6 @@ result = list(map(lambda x: x * 2, numbers))
 
 print(result)
 ```
-
-
 
 #### 모듈(Module)
 
@@ -302,13 +713,9 @@ print(result)
 
 - '.' 은 "점의 왼쪽 객체에서 점의 오른쪽 이름을 찾아라" 라는 의미의 연산자 ex) math.pi
 
-
-
 ##### 파이썬 표준 라이브러리
 
 - 파이썬 언어와 함께 제공되는 다양한 모듈과 패키지의 모음
-
-
 
 ##### 패키지
 
@@ -326,8 +733,6 @@ print(result)
     
     - tools.py
 
-
-
 - 사용법
 
 ```python
@@ -339,21 +744,7 @@ print(my_math.add(1,2))
 print(tools.mod(1,2))
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 ----
-
-
 
 # 23/07/18
 

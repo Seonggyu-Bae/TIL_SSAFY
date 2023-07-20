@@ -1,24 +1,11 @@
-print('hello', end = ' ')
-print('world')
+num = int(input("숫자를 입력하세요 : "))
 
-numbers = [1, 2, 3]
-result = map(str, numbers)
+#if statement
+#num이 홀수라면
+if num%2!=0:
+    print("홀수입니다.")
+else:
+    print("짝수입니다.")    
 
-print(result) #<map object at 0xfaffgfaga34>
-print(list(result)) #['1', '2', '3']
+#num이 홀수가 아니라면(짝수라면)
 
-
-
-result = []
-for number in numbers:
-    result.append(str(number))
-
-print(result)
-
-
-#map + lambda
-
-numbers = [1,2,3,4,5]
-result = list(map(lambda x: x * 2, numbers))
-
-print(result)

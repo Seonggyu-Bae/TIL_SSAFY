@@ -19,4 +19,19 @@ age = [20, 16, 52, 36, 60]
 address = ['서울', '강릉', '조선', '나주', '한성부']
 
 
-print(list(map(create_user,name,age,address)))
+#print(list(map(create_user,name,age,address)))
+
+
+
+"""
+import ws_3_2
+
+print(list(map(ws_3_2.create_user, name, age, address)))
+
+
+
+
+print(list(zip(name,age,address)))
+result = [ ws_3_2.create_user(*el) for el in list(zip(name,age,address)) ]
+print(result)
+"""
