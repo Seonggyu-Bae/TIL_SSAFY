@@ -285,33 +285,59 @@ user_data = [
 blood_types = ['A-', 'A+', 'B-', 'B+', 'O-', 'O+', 'AB-', 'AB+']
 black_list = ['Jenkins-Garcia', 'Stephens Group', 'White, Andrade and Howard', 'Warren-Stewart']
 
-error_user_num = 0
-error = 0
+def create_user(users):
+    user_list = []
+    cnt = 0
+    for user in users:
+        result = is_validation(user)
+        #반환값이 blocked 인 경우
+        if result == 'blocked':
+            cnt += 1
+            continue
+            #blocked 가 아니라면 튜플입니다.
 
-def create_user():
-    pass
-u_error = []
+        #반환값이 False인 경우    
+        elif result[0] == False: 
+            cnt += 1
+            #잘못된 데이터 None으로 변경
+            for invalid_data in result[1]:
+                user[invalid_data] = None
 
-def is_validation(u_data):
-    global error_user_num
-    global error
-    for i in range(len(u_data)):
-        if 2<=len(u_data[i]['name'])<=30:
-            pass
-        else:
-            if error==1:
-                u_error.append('name')
-                
-            else:
-                u_error[i].append('False')
-                error = 1
-                error_user_num += 1
-            
-    return u_error
+        user_list.append(user)
 
+    print(f'잘못된 데이터로 구성된 유저는 {cnt}명 입니다.')
 
-    #print(f'잘못된 데이터로 구성된 유저의 수는 {}입니다.')    
+    return user_list
 
+def is_validation(user):
 
+    is_valid = True
+    invalid_list = []
 
-print(is_validation(user_data))
+    #company blacklist에 있으면 blocked return
+    if user['company'] in black_list:
+        return 'blocked'
+
+    #blood_group
+    if user['blood_group'] not in blood_types:
+        is_valid = False
+        invalid_list.append('blood_group')
+    
+    #mail @
+    if '@' not in user['mail']:
+        is_valid = False
+        invalid_list.append('mail')
+
+    #name 2 <= name <= 30
+    if len(user['name']) < 2 or len(user['name']) > 30:
+        is_valid = False
+        invalid_list.append('name')
+
+    #len(website ) > 0
+    if len(user['website']) <= 0:
+        is_valid = False
+        invalid_list.append('website')
+
+    return is_valid, invalid_list
+
+print(create_user(user_data))

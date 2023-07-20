@@ -2,16 +2,20 @@ import ws_4_3
 
 black_list = ['Hoeger LLC', 'Keebler LLC', 'Yost and Sons', 'Johns Group', 'Romaguera-Crona']
 
-censored_user_list = []
+censored_user_list = {}
 u_list = {}
 
 def create_user(user_list):
-    for i in range(len(user_list)):
-        u_list.update({ 'na' : user_list[i]['name'] , 'comp': user_list[i]['company']})
+    for user in user_list:
+        name = user['name']
+        company = user['company']
+        u_list = {'na' : name, 'comp': company}
         if censorship(u_list) == True:
-            censored_user_list.append({u_list['na'],u_list['comp']})
-
-    return dict(censored_user_list)     
+            if company not in censored_user_list:
+                censored_user_list[company] = [name] #회사명을 키로, 사용자 이름을 값으로 리스트 추가
+            else:
+                censored_user_list[company].append(name) #회사명이 딕셔너리에 있으면 사용자 이름을 해당 리스트에 추가
+    return censored_user_list            
 
 
 
