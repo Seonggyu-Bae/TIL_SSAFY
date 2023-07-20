@@ -4,6 +4,7 @@ black_list = ['Hoeger LLC', 'Keebler LLC', 'Yost and Sons', 'Johns Group', 'Roma
 
 censored_user_list = []
 u_list = {}
+
 def create_user(user_list):
     for i in range(len(user_list)):
         u_list.update({ 'na' : user_list[i]['name'] , 'comp': user_list[i]['company']})
