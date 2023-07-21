@@ -12,7 +12,7 @@ for i in range(1,11):
     response = requests.get(API_URL)
     # JSON -> dict 데이터 변환
     parsed_data = response.json()
-    #dummy_data에 유저이름 추가
+    #dummy_data[]에 유저이름 추가
     dummy_data.append(parsed_data['name'])
    
 print(dummy_data)
