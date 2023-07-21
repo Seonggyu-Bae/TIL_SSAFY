@@ -1,3 +1,5 @@
+from pprint import pprint as print
+
 user_data = [
     {
         'blood_group': 'AB',
@@ -288,7 +290,7 @@ black_list = ['Jenkins-Garcia', 'Stephens Group', 'White, Andrade and Howard', '
 def create_user(users):
     user_list = []
     cnt = 0
-    for user in users:
+    for user in users:                      #파이썬의 좋은점 리스트안에 있는 인자? 를 그냥 가져다가 쓸 수 있음
         result = is_validation(user)
         #반환값이 blocked 인 경우
         if result == 'blocked':
@@ -338,6 +340,7 @@ def is_validation(user):
         is_valid = False
         invalid_list.append('website')
 
+    print(invalid_list)
     return is_valid, invalid_list
 
 print(create_user(user_data))
