@@ -1,20 +1,51 @@
+# 23/07/25
+
+
+
+```python
+a = [
+    { 
+        'name': 'pasta',
+        'price': 10000
+    },
+    {
+        'name': 'hamburger',
+        'price': 10000
+    }
+]
+
+
+b = {
+    'pasta' : 10000,
+    'hamburger': 10000
+}
+```
+
+#### a는 선형탐색
+
+#### b는 키로 찾음 해시함수, 해시테이블 , 세트요소 & 딕셔너리 키
+
+
+
+그래서 list랑 set랑 같은 원소를 가지고있어도  set가 빠른듯?
+
 # 
 
 
 
 
 
+----
+
+
+
 # 23/07/20
-
-
 
 ### 제어문(Control Statement)
 
 - 코드의 실행 흐름을 제어하는데 사용되는 구문
 
 - **조건**에 따라 코드 블록을 실행하거나 **반복**적으로 코드를 실행
-
-
 
 ### 조건문(Conditional Statement)
 
@@ -37,10 +68,6 @@
       print("Good")
   ```
 
-
-
-
-
 ### 반복문(Loop Statament)
 
 - 주어진 코드 블록을 여러 번 반복해서 실행하는 구문
@@ -49,15 +76,9 @@
   
   - 주어진 조건이 참인 동안 반복해서 실행
 
-
-
-
-
 ### For
 
 - 임의의 시퀀스의 항목들을 그 시퀀스에 들어있는 순서대로 반복
-
-
 
 ```python
 for variable in iterable:
@@ -84,17 +105,9 @@ coconut
 
 - 마지막으로 반복 변수에 리스트의 마지막 요소가 할당되고 코드블록이 실행
 
-
-
-
-
 **반복 가능한 객체(iterable) :  반복문에서 순회할 수있는 객체**
 
 - 시퀀스 객체 뿐만 아니라 dict, set 등도 포함
-
-
-
-
 
 ```python
 country = 'Korea'
@@ -175,19 +188,11 @@ d
 """
 ```
 
-
-
-
-
 ### while
 
 - 주어진 조건식이 참(True)인 동안 코드를 반복해서 실행
 
 - 조건식이 거짓(False)가 될 때 까지 반복
-
-
-
-
 
 ```python
 while conditional_expression:
@@ -222,17 +227,9 @@ while number <= 0:
     number = int(input(''type posivie int: '))
 
 print('Good Job!')
-
-
-
-
 ```
 
-
-
 ### while 문은 반드시 **<u>종료 조건</u>**이 필요
-
-
 
 ### 적절한 반복문 활용하기
 
@@ -242,15 +239,11 @@ print('Good Job!')
   
   - 예를 들어 리스트, 튜플, 문자열 등과 같은 시퀀스 형식의 데이터를 처리할 때
 
-
-
 - while
   
   - 반복 횟수가 불명확하거나 조건에 따라 반복을 종료해야 할 때 유용
   
   - 예를 들어 사용자의 입력을 받아서 특정 조건이 충족될 때까지 반복하는 경우
-
-
 
 ### 반복 제어
 
@@ -258,15 +251,9 @@ print('Good Job!')
 
 ##### 때때로 일부만 실행하느 것이 필요할 때가 있음
 
-
-
 - break : 반복을 즉시 중지
 
 - continue : 다음 반복으로 건너뜀
-
-
-
-
 
 ##### break 예시
 
@@ -278,14 +265,14 @@ while number <=0:
     if number == -9999:
         print('program will shut down.')
         break
-    
+
     if number < 0:
         print('you insert negative integer')
     else:
         print('0 is not positive integer')
-    
+
     number = int(input('insert posivie integer plz..: ')
-    
+
 print(f'your input_number is {number}')
 
 #----------------------------------------------------------------
@@ -301,16 +288,9 @@ for num in numbers:
 
 if not found_even:
     print('Can't find even number')
-
-
-
 ```
 
-
-
 ##### continue 예시
-
-
 
 ```python
 numbers = [1,2,3,4,5,6,7,8,9,10]
@@ -327,12 +307,7 @@ for num in numbers:
 7
 9
 """
-
-
-
 ```
-
-
 
 #### break 와 continue 주의사항
 
@@ -342,13 +317,7 @@ for num in numbers:
 
 - 약간의 시간이 들더라도 가능한 코드의 가독성을 유지하고 코드의 의도를 명확하게 작성하도록 노력하는 것이 중요
 
-
-
-
-
 ### List Comprehension : 간결하고 효율적인 리스트 생성 방법
-
-
 
 ```python
 # List Comprehension 구조
@@ -369,7 +338,6 @@ for num in numbers:
 
 numbers_1 = [1,2,3,4,5]
 squared_num_1 = [num**2 for num in numbers_1]
-
 ```
 
 ###### 참고 List Comprehension과 if 조건문
@@ -378,17 +346,11 @@ squared_num_1 = [num**2 for num in numbers_1]
 
 list(expression for 변수 in iterable if 조건식)
 
-
-
-
-
 ###### 참고
 
 - pass : 아무런 동작도 수행하지 않고 넘어가는 역할
   
   - 문법적으로 문장이 필요하지만 프로그램 실행에는 영향을 주지않아야 할 때 사용
-
-
 
 - pass 예시
   
@@ -400,21 +362,17 @@ list(expression for 변수 in iterable if 조건식)
   def my_function():
       pass
   ```
-  
-  
-  
-  - 조건문에서 아무런 동작을 수행하지 않아야 할 때
+
+- 조건문에서 아무런 동작을 수행하지 않아야 할 때
   
   ```python
   if condition:
-      pass # nothing to do
+    pass # nothing to do
   else:
-      #some code here
+    #some code here
   ```
-  
-  
-  
-  - 무한 루프에서 조건이 충족되지 않을 때 pass를 사용하여 루프를 계속 진행하는 방법
+
+- 무한 루프에서 조건이 충족되지 않을 때 pass를 사용하여 루프를 계속 진행하는 방법
 
 ```python
 while True:
@@ -425,8 +383,6 @@ while True:
     else:
         print('..')
 ```
-
-
 
 ## enumerate
 
@@ -449,17 +405,7 @@ index 2: cherry
 """
 ```
 
-
-
-
-
-
-
 ---
-
-
-
-
 
 # 23/07/19
 
